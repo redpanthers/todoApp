@@ -1,0 +1,30 @@
+{
+  "name": "todoApp using Angular and Rails",
+  "version": "0.0.0",
+  "authors": [
+    "Sibin Xavier <sibinx7@gmail.com>"
+  ],
+  "description": "This is a sample application which use Angular and Ruby on Rails",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "Angular",
+    "Ruby",
+    "Node",
+    "CSS3",
+    "HTML5",
+    "jQuery",
+    "NPM",
+    "Bower"
+  ],
+  "license": "BCD",
+  "homepage": "http://www.7chip.com",
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "angular-devise": "~1.1.0"
+  }
+}
