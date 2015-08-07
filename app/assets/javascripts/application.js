@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require main.min
+//= require angular-rails-templates
+//= require app
+//= require angular/controller/todoController
+
+
 //= require turbolinks
-//= require_tree .

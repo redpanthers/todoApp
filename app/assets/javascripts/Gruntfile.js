@@ -22,7 +22,22 @@ module.exports = function(grunt){
             }
         },
         uglify:{
-
+            my_target:{
+                files:{
+                    'main.min.js':['lib/dependencies.js']
+                }
+            }
+        },
+        copy:{
+            main:{
+                files:[
+                    {
+                        src: 'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                        dest: '../stylesheets/',
+                        filter: 'isFile'
+                    }
+                ]
+            }
         }
     })
 
@@ -37,6 +52,9 @@ module.exports = function(grunt){
     //Load watch and clean
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    //Copy files
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
 
 
 };

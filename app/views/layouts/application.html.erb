@@ -6,7 +6,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
+<body ng-app="toDo">
+  <base href=""/>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>My TodoApp</h1>
+        <hr/>
+        <div class="clearfix"></div>
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
