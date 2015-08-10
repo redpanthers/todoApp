@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get  'home/get_todo'
   post 'home/store_todo'
+
+  post 'user/:id/update', to:'user#update_user'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

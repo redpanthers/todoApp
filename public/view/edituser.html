@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div class="alert alert-danger" ng-show="editreturnmsg">
+      {{editreturnmsg}}
+    </div>
+    <form class="" ng-submit="edituser()">
+      <div class="form-group">
+        <input type="text" name="name" ng-value="user.name" ng-model="userData.name" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="text" name="username" ng-value="user.username" ng-model="userData.username" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="phone" name="phone" ng-value="user.phone" ng-model="userData.phone" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="text" name="age" ng-value="user.age" ng-model="userData.age" class="form-control">
+      </div>
+      <div class="form-group" ng-hide="processimage">
+          <input type="submit" class="btn btn-sm btn-primary" name="submit" value="Update">
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div class="media">
+      <div class="media-left media-top">
+        <a href="#">
+          <img src="" alt="" src="holder.js/300x200" class="media-object"/>
+        </a>
+      </div>
+      <div class="media-body">
+        <h2 class="media-heading">{{user.name}}</h2>
+        <h4><small>{{user.username}}</small></h4>
+        <hr>
+        <div class="well">
+            <dl class="">
+              <dt>Email</dt>
+              <dd>{{user.email}}</dd>
+            </dl>
+            <dl class="">
+              <dt>Age</dt>
+              <dd>{{user.age}}</dd>
+            </dl>
+            <dl class="">
+              <dt>Phone</dt>
+              <dd>{{user.phone}}</dd>
+            </dl>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+              <button type="button" name="button" ng-click="edit()">Edit User</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

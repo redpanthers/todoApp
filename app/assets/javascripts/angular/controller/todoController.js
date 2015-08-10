@@ -1,5 +1,11 @@
 toDo = window.toDo || {}
-toDo.controller('todoController',['$scope','$location','$http',function($scope,$location,$http){
+toDo.controller('todoController',['$scope','$location','$http','$state','Auth',function($scope,$location,$http,$state,Auth){
+  $scope.isCollapsed = false;
+  Auth.currentUser().then(function(user){
+    $scope.user = user
+  },function(){
+    $state.go('login')
+  })
   $scope.todos = {}
   $http.get('/home/get_todo')
     .then(function(success){
@@ -17,7 +23,7 @@ toDo.controller('todoController',['$scope','$location','$http',function($scope,$
           $scope.todos = success.data.todo
           $scope.formData = {}
         },function(error){ // error response
-            
+
         })
     //send ajax post
   }

@@ -22,7 +22,10 @@
                 <a href="#register">Register</a>
               </li>
               <li ng-show="signedIn()">
-                <a href="#">{{user.username}}</a>
+                <a href="#view_todos">View Todos</a>
+              </li>
+              <li ng-show="signedIn()">
+                <a href="#me">{{user.username}}</a>
               </li>
               <li ng-show="signedIn()">
                 <a href="#" ng-click="logout()">Logout</a>

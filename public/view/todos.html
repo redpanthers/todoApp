@@ -1,0 +1,43 @@
+<div class="row">
+  <aside class="col-md-3">
+    <h4 class="bold"><b>Recent</b></h4>
+    <div class="clearfix">
+      <ul class="recent-to-do">
+        <li ng-repeat="todo in todos">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              {{todo.title}}
+              <label class="pull-right label label-primary label-{{todo.priority}}">
+                <span ng-if="todo.priority ===3">High</span>
+                <span ng-if="todo.priority ===2">Medium</span>
+                <span ng-if="todo.priority ===1">Low</span>
+                <span ng-if="todo.priority ===null">Default</span>
+              </label>
+            </div>
+            <div class="panel-body">
+              {{todo.description}}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <section class="col-md-9">
+    <div aria-multiselectable="true" role="tablist" id="accordion" class="panel-group">
+      <div class="panel panel-default" ng-repeat="todo in todos" todo-accordion collapse="isCollapsed">
+        <div id="headingOne" role="tab" class="panel-heading" >
+          <h4 class="panel-title">
+            <a aria-controls="collapseOne" aria-expanded="false" data-href="#collapse{{todo.id}}" data-parent="#accordion" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" role="button" class="collaspse-link collapsed">
+              {{todo.title}}
+            </a>
+          </h4>
+        </div>
+        <div aria-labelledby="headingOne" role="tabpanel" class="panel-collapse collapse" id="collapse{{todo.id}}" aria-expanded="false" style="height: 0px;">
+          <div class="panel-body">
+            {{todo.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

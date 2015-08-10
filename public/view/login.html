@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="alert " ng-show="returnflag" ng-class="returnerrormsg? 'alert-danger': 'alert-success'">
+        {{returnerrormsg?returnerrormsg:"Successfully logined"}}
+      </div>
+      <form class="" ng-submit="login()">
+        <div class="form-group">
+          <input type="email" name="[user][email]" value="" ng-model="user.email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" name="[user][password]" value="" ng-model="user.password" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="submit" name="name" value="Login" class="btn btn-sm btn-primary">
+        </div>
+      </form>
+    </div>
+</div>
