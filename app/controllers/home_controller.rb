@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   skip_before_action :verify_authenticity_token
+  respond_to :html,:json
+  before_action :configure_permitted_parameters, if: :devise_controller?
   def index
 
   end
@@ -25,6 +27,10 @@ class HomeController < ApplicationController
 
   private
   def todo_params
-    params.require(:home).permit(:title,:description,:priority)
+    params.require(:home).permit(:title,:description,:priority,:filetodo)
+  end
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :phone, :name, :age,:email,:password) }
   end
 end

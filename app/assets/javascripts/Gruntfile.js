@@ -4,6 +4,7 @@ module.exports = function(grunt){
     var bootstrap_js_path ='bower_components/bootstrap/dist/js/bootstrap.min.js';
     var angular_js_path = 'bower_components/angular/angular.min.js';
     var angular_ui_router_js_path = 'bower_components/angular-ui-router/release/angular-ui-router.min.js';
+    var angular_devise_js_path = 'bower_components/angular-devise/lib/devise-min.js';
 
     //CSS/SASS
 
@@ -14,11 +15,8 @@ module.exports = function(grunt){
                 seperator: ';'
             },
             js:{
-                src:[jquery_js_path,bootstrap_js_path,angular_js_path,angular_ui_router_js_path],
+                src:[jquery_js_path,bootstrap_js_path,angular_js_path,angular_ui_router_js_path,angular_devise_js_path],
                 dest:'lib/dependencies.js'
-            },
-            css:{
-                src:[]
             }
         },
         uglify:{

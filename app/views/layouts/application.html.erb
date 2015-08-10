@@ -11,7 +11,26 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <h1>My TodoApp</h1>
+        <h1>My TodoApp
+        <small class="pull-right">
+          <h5>
+            <ul class="user-details nav nav-pills" ng-controller="userController">
+              <li ng-hide="signedIn()">
+                <a href="#login">Login</a>
+              </li>
+              <li ng-hide="signedIn()">
+                <a href="#register">Register</a>
+              </li>
+              <li ng-show="signedIn()">
+                <a href="#">{{user.username}}</a>
+              </li>
+              <li ng-show="signedIn()">
+                <a href="#" ng-click="logout()">Logout</a>
+              </li>
+            </ul>
+          </h5>
+        </small>
+        </h1>
         <hr/>
         <div class="clearfix"></div>
         <div ui-view></div>

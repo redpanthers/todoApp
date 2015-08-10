@@ -12,14 +12,13 @@ toDo.controller('todoController',['$scope','$location','$http',function($scope,$
 
   //Submit form
   $scope.submit_form = function(){
-    var getFormData = $scope.formData
-    $scope.formData = {}
+      $http.post('/home/store_todo',$scope.formData)
+        .then(function(success){ // success responce
+          $scope.todos = success.data.todo
+          $scope.formData = {}
+        },function(error){ // error response
+            
+        })
     //send ajax post
-    $http.post('/home/store_todo',getFormData)
-      .then(function(success){ // success responce
-        $scope.todos = success.data.todo
-      },function(error){ // error response
-
-      })
   }
 }])

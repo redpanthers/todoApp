@@ -1,5 +1,5 @@
 toDo = window.toDo || {}
-toDo = angular.module('toDo',['ui.router','templates']);
+toDo = angular.module('toDo',['ui.router','templates','Devise']);
 toDo.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $urlRouterProvider.otherwise('/')
   $stateProvider.state('todo',{
@@ -11,6 +11,11 @@ toDo.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlR
         url:'/create',
         controller: 'todoController',
         templateUrl: 'view/create.html'
+      })
+      .state('register',{
+        url:'/register',
+        controller:'registerController',
+        templateUrl:'view/register.html'
       })
 
 }]);
