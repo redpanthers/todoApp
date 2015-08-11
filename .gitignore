@@ -27,3 +27,6 @@ app/assets/javascripts/node_modules
 
 #Ignore Gemlock file
 Gemfile.lock
+
+# Ignore public/upload files
+public/uploads/*

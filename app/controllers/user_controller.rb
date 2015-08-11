@@ -18,18 +18,28 @@ class UserController < ApplicationController
       else
         render :json =>{status: "failed", message: "Unknown error occured"}
       end
-
-
-
     else
       render :json =>{status: "failed", message: "You can't edit other users profile"}
     end
-
   end
+
+  def upload_profile
+    puts params.inspect
+    user = User.find(current_user.id.to_i)
+    user.userimage = params[:file]
+    if user.save
+      render :json => {status:'success', user:user}
+    else
+      render :json => {status:'failed'}
+    end
+  end
+
+
   private
   def user_params
     params.require(:user).permit(:username,:age,:name,:phone,:email,:password,:userimage)
   end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :phone, :name, :age, :email, :password) }

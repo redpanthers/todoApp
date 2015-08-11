@@ -1,6 +1,13 @@
 toDo = window.toDo || {}
 toDo.controller('todoController',['$scope','$location','$http','$state','Auth',function($scope,$location,$http,$state,Auth){
   $scope.isCollapsed = false;
+  $scope.filteroption = {
+    priority:"",
+    title: ""
+  }
+  $scope.filterit = function(text){
+    $scope.filteroption.priority = text
+  }
   Auth.currentUser().then(function(user){
     $scope.user = user
   },function(){

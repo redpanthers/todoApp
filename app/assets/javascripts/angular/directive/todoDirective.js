@@ -21,3 +21,15 @@ toDo.directive('todoAccordion',['$animate',function($animate){
     link: link
   }
 }])
+  .directive('uploadProgress',['$animate',function($animate){
+    function link(scope,element,attr){
+      scope.$watch(attr.percentage,function(progress){
+        element.css({
+          width: progress+'%'
+        })
+      })
+    }
+    return{
+      link: link
+    }
+  }])

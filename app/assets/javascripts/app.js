@@ -1,5 +1,5 @@
 toDo = window.toDo || {}
-toDo = angular.module('toDo',['ui.router','templates','Devise']);
+toDo = angular.module('toDo',['ui.router','templates','Devise','angular-toArrayFilter','ngFileUpload']);
 toDo.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $urlRouterProvider.otherwise('/')
   $stateProvider.state('todo',{

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'home/store_todo'
 
   post 'user/:id/update', to:'user#update_user'
+  post 'user/upload_profile', to:'user#upload_profile'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -23,12 +23,23 @@
     </div>
   </aside>
   <section class="col-md-9">
+    <ul class="nav nav-pills" ng-init="filters=[{name:'Low',search:'1'},{name:'Medium',search:'2'},{name:'High',search:'3'},{name:'All', search:''}]">
+      <li class="" ng-repeat="filter in filters" >
+        <a ng-click="filterit(filter.search)">{{filter.name}}</a>
+      </li>
+    </ul>
     <div aria-multiselectable="true" role="tablist" id="accordion" class="panel-group">
-      <div class="panel panel-default" ng-repeat="todo in todos" todo-accordion collapse="isCollapsed">
+      <div class="panel panel-default" ng-repeat="todo in todos|toArray|filter:filteroption" todo-accordion collapse="isCollapsed">
         <div id="headingOne" role="tab" class="panel-heading" >
           <h4 class="panel-title">
             <a aria-controls="collapseOne" aria-expanded="false" data-href="#collapse{{todo.id}}" data-parent="#accordion" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" role="button" class="collaspse-link collapsed">
               {{todo.title}}
+              <label class="pull-right label label-primary label-{{todo.priority}}">
+                <span ng-if="todo.priority ===3">High</span>
+                <span ng-if="todo.priority ===2">Medium</span>
+                <span ng-if="todo.priority ===1">Low</span>
+                <span ng-if="todo.priority ===null">Default</span>
+              </label>
             </a>
           </h4>
         </div>

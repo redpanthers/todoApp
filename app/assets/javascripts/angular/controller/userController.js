@@ -1,5 +1,6 @@
 toDo = window.toDo || {}
-toDo.controller('userController',['$scope','$state','Auth','$http',function($scope,$state,Auth,$http){
+toDo.controller('userController',['$scope','$state','Auth','$http','Upload',function($scope,$state,Auth,$http,Upload){
+
   $scope.editreturnmsg = false
   $scope.signedIn  = Auth.isAuthenticated;
   $scope.logout    = Auth.logout;
@@ -46,6 +47,44 @@ toDo.controller('userController',['$scope','$state','Auth','$http',function($sco
       .then(function(){ // Responce from server, failed data
 
       })
+  }
+
+
+  //Upload user image
+  $scope.$watch('files',function(files){
+    if($scope.files !=""){
+      $scope.upload($scope.files)
+    }
+
+  })
+  $scope.isStarted = function(){
+    return false
+  }
+  $scope.percentage = 0
+  $scope.upload = function(file){
+    if(file && file.length > 0){
+      fileobj = file[0]
+      Upload.upload({
+        url: 'user/upload_profile',
+        file: fileobj
+      }).progress(function(evt){
+        $scope.isStarted = function(){
+          return true
+        }
+        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        $scope.percentage = progressPercentage
+      }).success(function(data){
+       $scope.user = data.user
+       $scope.file = data.user.userimage.url
+        $scope.isStarted = function(){
+          return false
+        }
+        $scope.percentage = 0
+      }).error(function(data){
+        console.log(data)
+      })
+    }
+
   }
 
 }]);
