@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'gallery/index'
+
+  get 'gallery/store'
+
+  get 'gallery/update'
+
+  get 'gallery/delete'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -10,6 +18,8 @@ Rails.application.routes.draw do
 
   post 'user/:id/update', to:'user#update_user'
   post 'user/upload_profile', to:'user#upload_profile'
+
+  post 'user/gallery/create', to:'gallery#store'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

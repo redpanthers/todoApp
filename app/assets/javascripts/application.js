@@ -20,6 +20,7 @@
 //= require angular/controller/registerController
 //= require angular/controller/userController
 //= require angular/controller/loginController
+//= require angular/controller/galleryController
 //= require angular/directive/todoDirective
 
 //= require turbolinks

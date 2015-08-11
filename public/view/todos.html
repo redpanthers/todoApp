@@ -28,8 +28,9 @@
         <a ng-click="filterit(filter.search)">{{filter.name}}</a>
       </li>
     </ul>
+    <hr/>
     <div aria-multiselectable="true" role="tablist" id="accordion" class="panel-group">
-      <div class="panel panel-default" ng-repeat="todo in todos|toArray|filter:filteroption" todo-accordion collapse="isCollapsed">
+      <div class="panel panel-default" ng-repeat="todo in filtertodos=(todos|toArray|filter:filteroption)" todo-accordion collapse="isCollapsed">
         <div id="headingOne" role="tab" class="panel-heading" >
           <h4 class="panel-title">
             <a aria-controls="collapseOne" aria-expanded="false" data-href="#collapse{{todo.id}}" data-parent="#accordion" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" role="button" class="collaspse-link collapsed">
@@ -48,6 +49,9 @@
             {{todo.description}}
           </div>
         </div>
+      </div>
+      <div ng-hide="filtertodos.length" class="well">
+        Sorry! You don't have any todo in {{filter.name}}
       </div>
     </div>
   </section>
