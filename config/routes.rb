@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   post 'user/gallery/create', to:'gallery#store'
   post 'user/gallery/update_details', to:'gallery#update_details'
   post 'user/gallery/:id/delete', to:'gallery#delete'
+
+  get 'user/:user_id/album', to:'album#index'
+  post 'user/album/create', to:'album#create'
+  post 'user/album/update', to:'album#update'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

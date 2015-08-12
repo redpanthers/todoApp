@@ -48,5 +48,9 @@ toDo.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlR
       controller:'galleryController',
       templateUrl:'view/gallery-create.html'
     })
-
+    .state('albums',{
+      url:'/albums',
+      controller:'albumController',
+      templateurl:'view/albums.html'
+    })
 }]);

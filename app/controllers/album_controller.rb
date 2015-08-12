@@ -1,4 +1,8 @@
 class AlbumController < ApplicationController
+  def index
+    userAlbums = Album.all
+    render :json => {status:"success",userAlbums:userAlbums}
+  end
   def create
 
   end
