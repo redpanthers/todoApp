@@ -18,7 +18,15 @@ toDo.controller('galleryController',['$scope','$http','Auth','Upload',function($
       $scope.upload(images)
     }
   })
+  $scope.updateDetails = function(image){
+    $http.post('user/gallery/update_details',image)
+      .then(function(){
 
+      })
+      .then(function(){
+
+      })
+  }
   $scope.imageDelete = function(image,index){
     $http.post('user/gallery/'+image.id+'/delete',{image:image})
       .then(function(data){

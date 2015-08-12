@@ -33,3 +33,21 @@ toDo.directive('todoAccordion',['$animate',function($animate){
       link: link
     }
   }])
+  .directive('contenteditable',[function(){
+    function link(scope,element,attr,ngModel){
+      function readText(){
+        ngModel.$setViewValue(element.html())
+      }
+      ngModel.$render = function(){
+        element.html(ngModel.$viewValue || "")
+      };
+      element.bind('blur keyup focusout',function(text){
+        scope.$apply(readText())
+      });
+    }
+    return{
+      require:'ngModel',
+      restrict: "A",
+      link: link
+    }
+  }])

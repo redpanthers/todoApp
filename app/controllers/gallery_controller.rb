@@ -15,7 +15,11 @@ class GalleryController < ApplicationController
     end
   end
 
-  def update
+  def update_details
+    image = params
+    gallery = Gallery.find(image[:id])
+    gallery.update(gallery_params)
+    render :json =>{status:"success"}
   end
 
   def delete

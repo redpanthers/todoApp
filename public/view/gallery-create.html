@@ -16,11 +16,12 @@
         </ul>
       </div>
     </div>
+    <hr/>
     <div class="row">
       <div class="col-xs-12">
         <div class="image-wrapper row">
-          <div class="images col-xs-12 col-sm-3 col-md-2" ng-repeat="image in myImages">
-            <div class="thumbnail">
+          <div  class="images col-xs-12 col-sm-3 col-md-2" ng-repeat="image in myImages">
+            <div class="thumbnail"   ng-mouseover="expand=1" ng-mouseleave="expand=0" ng-init="expand=0">
               <a data-href="#">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="imageDelete(image,myImages.indexOf(image))"><span aria-hidden="true">&times;</span></button>
                 <img ng-class="img-responsive" ng-src="{{image.image.url}}" alt="{{image.image.title && image.image.title || 'default title'}}"/>
@@ -29,6 +30,11 @@
                 <div class="date">
                   Created at <span class="pull-right">{{image.created_at | date:'fullDate'}}</span>
                 </div>
+                <div class="details" ng-show="expand || image.title.length">
+                  <div class="title" ng-model="image.title" contenteditable="true" ng-blur="updateDetails(image)"></div>
+                  <div class="description" ng-model="image.description" contenteditable="true" ng-blur="updateDetails(image)"></div>
+                </div>
+
               </div>
             </div>
           </div>
