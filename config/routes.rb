@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   post 'user/:id/update', to:'user#update_user'
   post 'user/upload_profile', to:'user#upload_profile'
 
+  get 'user/gallery', to:'gallery#index'
   post 'user/gallery/create', to:'gallery#store'
+  post 'user/gallery/:id/delete', to:'gallery#delete'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

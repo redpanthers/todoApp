@@ -1,9 +1,12 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-3" ng-include="'_gallery_album_sidebar.html'"></div>
+  <div class="col-xs-12 col-sm-3" ng-include="'view/_gallery_album_sidebar.html'"></div>
   <div class="col-xs-12 col-sm-9">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-
+        <div ngf-drop ngf-select ng-model="images" class="drop-box"
+             ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+             accept="image/*,application/pdf">Drop pdfs or images here or click to upload</div>
+        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
       </div>
       <div class="col-xs-12 col-sm-8">
         <ul class="list-group">
@@ -11,6 +14,25 @@
           <li class="list-group-item">Allowed extensions <i>JPG</i>,<i>PNG</i></li>
           <li class="list-group-item">Allowed size upto 25MB</li>
         </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="image-wrapper row">
+          <div class="images col-xs-12 col-sm-3 col-md-2" ng-repeat="image in myImages">
+            <div class="thumbnail">
+              <a data-href="#">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="imageDelete(image,myImages.indexOf(image))"><span aria-hidden="true">&times;</span></button>
+                <img ng-class="img-responsive" ng-src="{{image.image.url}}" alt="{{image.image.title && image.image.title || 'default title'}}"/>
+              </a>
+              <div class="caption">
+                <div class="date">
+                  Created at <span class="pull-right">{{image.created_at | date:'fullDate'}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
