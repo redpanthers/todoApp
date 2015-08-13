@@ -1,14 +1,60 @@
 <h1>Albums</h1>
 <hr/>
-<ul class="nav nav-pills" ng-controll="albumController">
+<ul class="nav nav-pills">
   <li>
-    <div class="thumbnail">
+    <div class="thumbnail" ng-init="isHover=0" ng-mouseover="isHover=1" ng-mouseleave="isHover=0">
       <img src="defaults/empty-album.png" alt=""/>
       <div class="caption">
-        <h4>
-          Name
-        </h4>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4>Create</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-show" ng-init="error=1" ng-show="isHover">
+            <form ng-submit="addAlbum(album)">
+              <div class="form-group">
+                <!--<label ng-class="{{error && 'error' || ''}}"for="album-name">Name</label>-->
+                <div class="clearfix"></div>
+                <input class="form-control" id="album-name" type="text" ng-class=" {{error && 'error' || ''}}" ng-model="album.name"/>
+              </div>
+              <div class="form-group">
+                <!--<label ng-class="{{error && 'error' || ''}}" for="album-description">Description</label>-->
+                <div class="clearfix"></div>
+                <textarea class="form-control" id="album-description" ng-class=" {{error && 'error' || ''}}" ng-model="album.description"></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-default btn-block text-center" >
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+  </li>
+</ul>
+<hr/>
+<ul class="nav nav-pills">
+  <li ng-repeat="album in myAlbums" ng-show="myAlbums.length" data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="imageInAlbum">
+  <div ng-repeat="sone in imageInAlbum track by $index" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="imageInAlbum" jqyoui-draggable="{index: {{$index}},animate:true}">
+    {{sone.name}}
+  </div>
+    <div class="thumbnail" ng-init="isHover=0" ng-mouseover="isHover=1" ng-mouseleave="isHover=0">
+      <img ng-src="defaults/empty-album.png" alt=""/>
+      <div class="caption">
+        <h4 contenteditable="true" ng-model="album.name">
+          {{album.name}}
+        </h4>
+        <p contenteditable="true" ng-model="album.description">
+          {{album.description}}
+        </p>
+        <h6>Uploaded by {{album.user.name}}</h6>
+      </div>
+    </div>
+
   </li>
 </ul>

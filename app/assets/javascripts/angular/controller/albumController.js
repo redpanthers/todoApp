@@ -1,5 +1,6 @@
 toDo = window.toDo || {}
 toDo.controller('albumController',['$scope','$http','Auth',function($scope,$http,Auth){
+  $scope.myAlbums = []
   $scope.user = {}
   Auth.currentUser().then(function(user){
     $scope.user = user
@@ -15,4 +16,18 @@ toDo.controller('albumController',['$scope','$http','Auth',function($scope,$http
     .then(function(){
 
     })
+
+  //Create new album
+  $scope.addAlbum = function(album){
+    album.user_id = $scope.user.id
+    $http.post('user/album/create',{album:album})
+         .then(function(result){
+            console.log(result)
+            $scope.myAlbums.unshift(result.data.album)
+
+         })
+         .then(function(result){
+            console.log(result)
+         })
+  }
 }])

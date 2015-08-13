@@ -1,12 +1,14 @@
 module.exports = function(grunt){
     //JS/CoffeeScript
     var jquery_js_path ='bower_components/jquery/dist/jquery.min.js';
+    var jquery_ui_js_path = 'bower_components/jquery-ui/jquery-ui.min.js';
     var bootstrap_js_path ='bower_components/bootstrap/dist/js/bootstrap.min.js';
     var angular_js_path = 'bower_components/angular/angular.min.js';
     var angular_ui_router_js_path = 'bower_components/angular-ui-router/release/angular-ui-router.min.js';
     var angular_devise_js_path = 'bower_components/angular-devise/lib/devise-min.js';
     var angular_file_upload_js_path = 'bower_components/ng-file-upload/ng-file-upload-all.min.js';
     var angular_to_array_js_path   = 'bower_components/angular-toArrayFilter/toArrayFilter.js';
+    var angular_drag_and_drop_js_path = 'bower_components/angular-dragdrop/src/angular-dragdrop.min.js';
     //CSS/SASS
 
 
@@ -16,8 +18,8 @@ module.exports = function(grunt){
                 seperator: ';'
             },
             js:{
-                src:[jquery_js_path,bootstrap_js_path,angular_js_path,angular_ui_router_js_path,angular_devise_js_path, angular_file_upload_js_path,
-                  angular_to_array_js_path],
+                src:[jquery_js_path,jquery_ui_js_path,bootstrap_js_path,angular_js_path,angular_ui_router_js_path,angular_devise_js_path, angular_file_upload_js_path,
+                  angular_to_array_js_path,angular_drag_and_drop_js_path],
                 dest:'lib/dependencies.js'
             }
         },

@@ -3,6 +3,13 @@
  */
 toDo = window.toDo || {}
 toDo.controller('galleryController',['$scope','$http','Auth','Upload',function($scope,$http,Auth,Upload){
+  $scope.user = {}
+  Auth.currentUser().then(function(user){
+    $scope.user = user
+  },function(){
+    $state.go('login')
+  })
+
   $scope.myImages = []
   $http.get('user/gallery')
        .then(function(data){
@@ -56,5 +63,39 @@ toDo.controller('galleryController',['$scope','$http','Auth','Upload',function($
 
       })
     }
+  }
+
+
+  //For album releated contents
+  $scope.myAlbums = []
+  console.log($scope.user)
+  if(angular.isObject($scope.user)){
+    $http.get('user/'+$scope.user.id+'/album')
+      .then(function(data){
+        $scope.myAlbums = data.data.userAlbums
+        console.log(data)
+      })
+      .then(function(){
+
+      })
+  }
+
+
+  //Create new album
+  $scope.addAlbum = function(album){
+    album.user_id = $scope.user.id
+    $http.post('user/album/create',{album:album})
+      .then(function(result){
+        console.log(result)
+        $scope.myAlbums.unshift(result.data.album)
+
+      })
+      .then(function(result){
+        console.log(result)
+      })
+  }
+
+  $scope.droped = function(item){
+    console.log(item)
   }
 }])
