@@ -38,12 +38,10 @@
   </li>
 </ul>
 <hr/>
-<ul class="nav nav-pills">
-  <li ng-repeat="album in myAlbums" ng-show="myAlbums.length" data-drop="true" jqyoui-droppable="{multiple:true}" ng-model="imageInAlbum">
-  <div ng-repeat="sone in imageInAlbum track by $index" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="imageInAlbum" jqyoui-draggable="{index: {{$index}},animate:true}">
-    {{sone.name}}
-  </div>
-    <div class="thumbnail" ng-init="isHover=0" ng-mouseover="isHover=1" ng-mouseleave="isHover=0">
+<ul class="nav nav-pills my-albums">
+  <li ng-repeat="album in myAlbums" data-album-id="{{album.id}}" ng-show="myAlbums.length" data-drop="true" jqyoui-droppable="{multiple:true,onDrop:'droped(imageInAlbum)'}" ng-model="imageInAlbum">
+    <div id="" class="thumbnail" ng-init="isHover=0" ng-mouseover="isHover=1" ng-mouseleave="isHover=0">
+      <span class="badge">{{album.count}}</span>
       <img ng-src="defaults/empty-album.png" alt=""/>
       <div class="caption">
         <h4 contenteditable="true" ng-model="album.name">
@@ -55,6 +53,5 @@
         <h6>Uploaded by {{album.user.name}}</h6>
       </div>
     </div>
-
   </li>
 </ul>

@@ -20,9 +20,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="image-wrapper row">
-          <div  class="images col-xs-12 col-sm-3 col-md-2" ng-repeat="image in myImages" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" data-jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}" ng-model="images">
-            <div class="thumbnail"   ng-mouseover="expand=1" ng-mouseleave="expand=0" ng-init="expand=0">
-              <a data-href="#">
+          <div  class="images col-xs-12 col-sm-3 col-md-2" ng-repeat="image in myImages" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" data-jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}" ng-model="images" id="{{image.id}}" data-image-id="{{image.id}}">
+            <div data-image="{{image.id}}" class="thumbnail"   ng-mouseover="expand=1" ng-mouseleave="expand=0" ng-init="expand=0">
+              <a data-image-id="{{image.id}}" data-href="#">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="imageDelete(image,myImages.indexOf(image))"><span aria-hidden="true">&times;</span></button>
                 <img ng-class="img-responsive" ng-src="{{image.image.url}}" alt="{{image.image.title && image.image.title || 'default title'}}"/>
               </a>

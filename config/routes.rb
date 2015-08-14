@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'user/:user_id/album', to:'album#index'
   post 'user/album/create', to:'album#create'
   post 'user/album/update', to:'album#update'
+
+  post 'user/album/gallery', to:'album#add_to_album'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

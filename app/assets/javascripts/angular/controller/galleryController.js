@@ -95,7 +95,19 @@ toDo.controller('galleryController',['$scope','$http','Auth','Upload',function($
       })
   }
 
+  $scope.imageInAlbum = []
   $scope.droped = function(item){
-    console.log(item)
+    image_id = $(item.toElement).closest('.images').attr('data-image-id')
+    album_id = $(item.target).attr('data-album-id')
+    $http.post('user/album/gallery',{image_id:image_id,album_id:album_id})
+      .then(function(data){
+        $(item.target).find('.badge').html(data.data.image_count)
+      })
+      .then(function(data){
+
+      })
+
+
+
   }
 }])
